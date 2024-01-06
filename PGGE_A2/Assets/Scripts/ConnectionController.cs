@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 namespace PGGE
 {
@@ -33,6 +34,12 @@ namespace PGGE
             void Start()
             {
                 mConnectionProgress.SetActive(false);
+            }
+
+            public void ReturnToMenu() //new function that is called when the return button is clicked
+            {
+                SceneManager.LoadScene("Menu"); //loads the menu scene
+                Debug.Log("This function was called"); //debug log to confirm that the function was called
             }
 
             public void Connect()

@@ -41,7 +41,6 @@ public class Player_Multiplayer : MonoBehaviour
     public int[] RoundsPerSecond = new int[3];
     bool[] mFiring = new bool[3];
 
-
     // Start is called before the first frame update
     void Start()
     {
