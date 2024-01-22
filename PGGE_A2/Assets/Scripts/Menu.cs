@@ -8,32 +8,35 @@ public class Menu : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip buttonClickSound;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnClickSinglePlayer()
     {
-        //Debug.Log("Loading singleplayer game");
-        SceneManager.LoadScene("SinglePlayer");
+        OnClickSound();
+        Invoke("SwitchSingleplayer", 0.5f);
+        Debug.Log("Loading singleplayer game");
+        //SceneManager.LoadScene("SinglePlayer");
     }
 
     public void OnClickMultiPlayer()
     {
-        //Debug.Log("Loading multiplayer game");
-        SceneManager.LoadScene("Multiplayer_Launcher");
+        OnClickSound();
+        Invoke("SwitchMultiplayer", 0.5f);
+        Debug.Log("Loading multiplayer game");
+        //SceneManager.LoadScene("Multiplayer_Launcher");
     }
 
     public void OnClickSound()
     {
         audioSource.Play();
     }
+
+    public void SwitchMultiplayer()
+    {
+        SceneManager.LoadScene("Multiplayer_Launcher");
+    }
+
+    public void SwitchSingleplayer()
+    {
+        SceneManager.LoadScene("SinglePlayer");
+    }
+        
 }

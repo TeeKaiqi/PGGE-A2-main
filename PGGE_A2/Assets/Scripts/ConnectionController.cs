@@ -49,7 +49,7 @@ namespace PGGE
                 mInpPlayerName.SetActive(false);
                 mConnectionProgress.SetActive(true);
 
-                audioSource.Play();
+                audioSource.Play(); //Plays the click button audio
 
                 // we check if we are connected or not, we join if we are, 
                 // else we initiate the connection to the server.
