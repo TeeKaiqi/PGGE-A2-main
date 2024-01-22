@@ -14,7 +14,6 @@ namespace PGGE
             const string gameVersion = "1";
 
             public AudioSource audioSource;
-            public AudioClip onClickSound;
 
             public byte maxPlayersPerRoom = 3;
 

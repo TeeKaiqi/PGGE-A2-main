@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioClip buttonClickSound;
+    public AudioSource audioSource1;
+    public AudioSource audioSource2;
 
     public void OnClickSinglePlayer()
     {
-        OnClickSound();
+        OnClickSound1();
         Invoke("SwitchSingleplayer", 0.5f);
         Debug.Log("Loading singleplayer game");
         //SceneManager.LoadScene("SinglePlayer");
@@ -18,15 +18,20 @@ public class Menu : MonoBehaviour
 
     public void OnClickMultiPlayer()
     {
-        OnClickSound();
+        OnClickSound2();
         Invoke("SwitchMultiplayer", 0.5f);
         Debug.Log("Loading multiplayer game");
         //SceneManager.LoadScene("Multiplayer_Launcher");
     }
 
-    public void OnClickSound()
+    public void OnClickSound1()
     {
-        audioSource.Play();
+        audioSource1.Play();
+    }
+
+    public void OnClickSound2()
+    {
+        audioSource2.Play();
     }
 
     public void SwitchMultiplayer()
