@@ -13,6 +13,9 @@ namespace PGGE
         {
             const string gameVersion = "1";
 
+            public AudioSource audioSource;
+            public AudioClip onClickSound;
+
             public byte maxPlayersPerRoom = 3;
 
             public GameObject mConnectionProgress;
@@ -23,14 +26,10 @@ namespace PGGE
 
             void Awake()
             {
-                // this makes sure we can use PhotonNetwork.LoadLevel() on 
-                // the master client and all clients in the same 
-                // room sync their level automatically
+                // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
                 PhotonNetwork.AutomaticallySyncScene = true;
             }
 
-
-            // Start is called before the first frame update
             void Start()
             {
                 mConnectionProgress.SetActive(false);
@@ -38,7 +37,9 @@ namespace PGGE
 
             public void ReturnToMenu() //new function that is called when the return button is clicked
             {
-                SceneManager.LoadScene("Menu"); //loads the menu scene
+                //SceneManager.LoadScene("Menu"); //loads the menu scene
+                audioSource.Play();
+                Invoke("SwitchScene", 0.5f);
                 Debug.Log("This function was called"); //debug log to confirm that the function was called
             }
 
@@ -47,6 +48,8 @@ namespace PGGE
                 mBtnJoinRoom.SetActive(false);
                 mInpPlayerName.SetActive(false);
                 mConnectionProgress.SetActive(true);
+
+                audioSource.Play();
 
                 // we check if we are connected or not, we join if we are, 
                 // else we initiate the connection to the server.
@@ -64,6 +67,11 @@ namespace PGGE
                     PhotonNetwork.GameVersion = gameVersion;
                 }
             }
+            public void SwitchScene()
+            {
+                SceneManager.LoadScene("Menu");
+            } 
+
             public override void OnConnectedToMaster()
             {
                 if (isConnecting)

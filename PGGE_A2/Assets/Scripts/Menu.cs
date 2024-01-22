@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip buttonClickSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,4 +32,8 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Multiplayer_Launcher");
     }
 
+    public void OnClickSound()
+    {
+        audioSource.Play();
+    }
 }
