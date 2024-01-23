@@ -5,7 +5,6 @@ using PGGE.Patterns;
 using PGGE;
 using Photon.Pun;
 
-
 public class Wizard : MonoBehaviour
 {
     private PhotonView mPhotonView;
