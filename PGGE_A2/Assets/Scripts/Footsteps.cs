@@ -5,19 +5,20 @@ using UnityEngine;
 public class Footsteps : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip dirtFootstep;
+    public AudioClip concreteFootstep;
     [SerializeField]
-    private AudioClip concreteFootstep;
-    [SerializeField]
-    private AudioClip woodFootstep;
-    [SerializeField]
-    private AudioClip dirtFootstepRun;
-    [SerializeField]
-    private AudioClip concreteFootstepRun;
-    [SerializeField]
-    private AudioClip woodFootstepRun;
+    public AudioClip concreteFootstepRun;
+    //[SerializeField]
+    //private AudioClip woodFootstepRun;
+    //[SerializeField]
+    //private AudioClip woodFootstep;
+    //[SerializeField]
+    //private AudioClip dirtFootstepRun;
+    //[SerializeField]
+    //private AudioClip dirtFootstep;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
+
     public LayerMask groundLayer;
 
     public GameObject character;
@@ -28,27 +29,15 @@ public class Footsteps : MonoBehaviour
         audioSource = GetComponent<AudioSource>(); 
     }
 
-    private void Step()
+    public void Step()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f, groundLayer))
         {
-            string groundTag = hit.collider.gameObject.tag;
+            //string groundTag = hit.collider.gameObject.tag;
+            PlayFootstepSound(concreteFootstep);
 
             Debug.Log("Raycast Hit: " + hit.collider.gameObject.name);
-
-            if (groundTag == "Dirt")
-            {
-                PlayFootstepSound(dirtFootstep);
-            }
-            if (groundTag == "Concrete")
-            {
-                PlayFootstepSound(concreteFootstep);
-            }
-            if (groundTag == "Wood")
-            {
-                PlayFootstepSound(woodFootstep);
-            }
         }
         else
         {
@@ -56,27 +45,16 @@ public class Footsteps : MonoBehaviour
         }
     }
 
-    private void StepRun()
+    public void StepRun()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f, groundLayer))
         {
-            string groundTag = hit.collider.gameObject.tag;
+            //string groundTag = hit.collider.gameObject.tag;
 
             Debug.Log("Raycast Hit: " + hit.collider.gameObject.name);
 
-            if (groundTag == "Dirt")
-            {
-                PlayFootstepSound(dirtFootstepRun);
-            }
-            if (groundTag == "Concrete")
-            {
-                PlayFootstepSound(concreteFootstepRun);
-            }
-            if (groundTag == "Wood")
-            {
-                PlayFootstepSound(woodFootstepRun);
-            }
+            PlayFootstepSound(concreteFootstepRun); 
         }
         else
         {
@@ -84,7 +62,7 @@ public class Footsteps : MonoBehaviour
         }
     }
 
-    private void PlayFootstepSound(AudioClip clip)
+    public void PlayFootstepSound(AudioClip clip)
     {
         audioSource.volume = Random.Range(1f, 2.5f);
         audioSource.pitch = Random.Range(0.8f, 1.8f);

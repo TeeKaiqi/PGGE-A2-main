@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using PGGE.Patterns;
 using PGGE;
+using Photon.Pun;
+
 
 public class Wizard : MonoBehaviour
 {
+    private PhotonView mPhotonView;
+
     [HideInInspector]
     public FSM mFsm = new FSM();
     public Animator mAnimator;
@@ -47,6 +51,8 @@ public class Wizard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mPhotonView = gameObject.GetComponent<PhotonView>();
+
         mFsm.Add(new WizardState_MOVEMENT(this));
         mFsm.Add(new WizardState_ATTACK(this));
         mFsm.Add(new WizardState_RELOAD(this));
@@ -57,6 +63,8 @@ public class Wizard : MonoBehaviour
 
     void Update()
     {
+        if (!mPhotonView.IsMine) return; //Check if IsMine is true and then go through the rest of the update function, if not return the function
+
         mFsm.Update();
         Aim();
 
