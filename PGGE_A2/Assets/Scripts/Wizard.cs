@@ -168,7 +168,7 @@ public class Wizard : MonoBehaviour
             ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
 
             //now you can set the position of the UI element
-            mCrossHair.anchoredPosition = WorldObject_ScreenPosition;
+            //mCrossHair.anchoredPosition = WorldObject_ScreenPosition;
 
 
             // Enable or set active the crosshair gameobject.
@@ -177,7 +177,7 @@ public class Wizard : MonoBehaviour
         else
         {
             // Hide or set inactive the crosshair gameobject.
-            mCrossHair.gameObject.SetActive(false);
+            //mCrossHair.gameObject.SetActive(false);
         }
     }
 
