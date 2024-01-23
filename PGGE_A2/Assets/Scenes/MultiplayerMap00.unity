@@ -1293,6 +1293,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4010925881578358639, guid: aff9c8d41d482d745a3a69a381e9c634, type: 3}
+      propertyPath: ShowParameterInspector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6533356015121130626, guid: aff9c8d41d482d745a3a69a381e9c634, type: 3}
       propertyPath: m_Name
       value: Wizard_Networked

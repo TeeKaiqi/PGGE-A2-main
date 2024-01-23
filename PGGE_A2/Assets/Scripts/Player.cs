@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [HideInInspector]
     public FSM mFsm = new FSM();
+
     public Animator mAnimator;
     public PlayerMovement mPlayerMovement;
 
@@ -50,14 +51,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        mFsm.Update();
-        Aim();
+        mFsm.Update(); //Updates the finite state machine
+        Aim(); //handles the aiming logic
+        HandleAttackInput(); //handles the attack input logic
+    }
 
-        // For Student ----------------------------------------------------//
-        // Implement the logic of button clicks for shooting. 
-        //-----------------------------------------------------------------//
-
-        if (Input.GetButton("Fire1"))
+    public void HandleAttackInput()
+    {
+        if (Input.GetButton("Fire1")) //checks if the fire1 button is pressed, if it is it sets the others to false
         {
             mAttackButtons[0] = true;
             mAttackButtons[1] = false;
@@ -65,10 +66,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            mAttackButtons[0] = false;
+            mAttackButtons[0] = false; //if the fire1 button was not pressed then set the attack to false
         }
 
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2")) //checks if the fire2 button is pressed, if it is it sets the others to false
         {
             mAttackButtons[0] = false;
             mAttackButtons[1] = true;
@@ -76,10 +77,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            mAttackButtons[1] = false;
+            mAttackButtons[1] = false; //if the fire2 button was not pressed then set the attack to false
         }
 
-        if (Input.GetButton("Fire3"))
+        if (Input.GetButton("Fire3")) //checks if the fire3 button is pressed, if it is it sets the others to false
         {
             mAttackButtons[0] = false;
             mAttackButtons[1] = false;
@@ -87,7 +88,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            mAttackButtons[2] = false;
+            mAttackButtons[2] = false; //if the fire3 button was not pressed, then set the attack to false
         }
     }
 
