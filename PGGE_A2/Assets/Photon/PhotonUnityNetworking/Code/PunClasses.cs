@@ -877,6 +877,7 @@ namespace Photon.Pun
                 }
                 else
                 {
+                    Debug.Log("Successfully fetched the wizard multiplayer thing");
                     this.ResourceCache.Add(prefabId, res);
                 }
             }
